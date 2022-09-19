@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <br />
+  <form (ngSubmit)='getData()' [formGroup]='form' class="form">
+
+    <input formControlName='email' type="text" class="form-control">
+    <small class="alert alert-danger" *ngIf="email.hasError('required') && email.touched">
+      Email is required
+    </small>
+    <small class="alert alert-danger" *ngIf="email.hasError('email') && email.touched">
+      Email must have specific format... @ .
+    </small>
+
+
+    <input formControlName='password' type="password" class="form-control">
+    <small class="alert alert-danger"
+      *ngIf="password.hasError('required') && password.touched">
+      Password is required
+    </small>
+    <small class="alert alert-danger"
+      *ngIf="password.hasError('maxlength') && password.touched">
+      Password is required and should less than 10 characters
+    </small>
+    <small class="alert alert-danger"
+      *ngIf=" password.hasError('pattern') && password.touched">
+      Must be only letters...
+    </small>
+
+    <br><br>
+    <button [disabled]='form.invalid' class="btn btn-primary">Login</button>
+  </form>
+</div>

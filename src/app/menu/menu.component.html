@@ -4,18 +4,14 @@
 <table class="table" id='tab'>
     <thead>
         <tr>
-            <th scope="col">Serial number</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Category</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let x of products.data">
-            <td>{{ x.serial }}</td>
+        <tr *ngFor="let x of response.data.products">
             <td>{{ x.productName }}</td>
             <td>{{ x.price }}</td>
-            <td>{{ x.productCategory.description }}</td>
         </tr>
     </tbody>
-</table>
+  </table>

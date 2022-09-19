@@ -1,0 +1,12 @@
+<!--<app-header></app-header>-->
+<section class="flex-column main-center cross-center">
+  <table class="table" id='tab'>
+    <tbody>
+        <tr *ngFor="let x of stores.data">
+            <td>
+              <a [routerLink]="['/menu', x.name]">{{x.name}}</a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</section>
