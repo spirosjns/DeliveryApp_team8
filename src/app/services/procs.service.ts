@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProcsService {
 
+  cart:any;
   name:any;
   storesUrl = `http://localhost:8080/stores`;
   ordersUrl = `http://localhost:8080/orders`;
@@ -31,4 +32,5 @@ export class ProcsService {
       params: new HttpParams().set('name', this.name)
     });
   }
+
 }

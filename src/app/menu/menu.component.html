@@ -17,6 +17,9 @@
         </tr>
     </tbody>
   </table>
-  <div>
-    <a [routerLink]="['/cart', response.data.name]">Go to cart!</a>
+  <div *ngIf="cartisnotEmpty()">
+    <button [routerLink]="['/cart', response.data.name]">Go to cart!</button>
+  </div>
+  <div *ngIf="cartisnotEmpty()">
+    <button (click)="emptyCart()">Empty cart!</button>
   </div>

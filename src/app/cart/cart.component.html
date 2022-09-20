@@ -1,1 +1,20 @@
-<p>cart works!</p>
+<h1>Cart</h1>
+<div class="d-flex justify-content-center">
+</div>
+<h3>{{ store.data.name }}</h3>
+<table class="table" id='tab'>
+  <thead>
+    <tr>
+      <th scope="col">Product name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Cost</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let x of store.data.products">
+    <tr *ngIf="getProduct(x.id)">
+      <td>{{ x.productName }}</td>
+      <td>{{ cart.get(x.id) }}</td>
+      <td>{{ cart.get(x.id)*(x.price) }}</td>
+    </tr>
+  </tbody>
+</table>

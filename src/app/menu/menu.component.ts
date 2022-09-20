@@ -1,5 +1,6 @@
 import { Component, OnInit, ɵisListLikeIterable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ProcsService } from '../services/procs.service';
 
 @Component({
@@ -24,7 +25,12 @@ export class MenuComponent implements OnInit {
     });
     this.service.findbyStore(this.name).subscribe(data => {
       this.response = data;
+      console.log(this.response);
       });
+  }
+
+  ngOnDestroy(): void {
+    this.service.cart = this.cart;
   }
 
   additemtoCart(id: any): void {
@@ -35,9 +41,6 @@ export class MenuComponent implements OnInit {
       this.cart.set(id, 1);
     }
     console.log(this.cart);
-    //this.service.addtoCart(payload).subscribe(() => {
-    //  alert('Product Added');
-    //});
   }
 
   removeitemfromCart(id: any): void {
@@ -50,6 +53,15 @@ export class MenuComponent implements OnInit {
       }
     }
     console.log(this.cart);
+  }
+
+  cartisnotEmpty(): boolean {
+    return !(this.cart.size == 0);
+  }
+
+  emptyCart(): void {
+    this.cart.clear();
+    alert("The cart is empty!");
   }
 
 }

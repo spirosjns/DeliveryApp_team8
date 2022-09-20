@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { StoresComponent } from './stores/stores.component';
 import { AuthGuard } from './services/auth.guard';
 import { MenuComponent } from './menu/menu.component';
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'menu/:name', component: MenuComponent},
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
-  {path: 'userhome', component: UserhomeComponent},
+  { path: 'userhome', component: UserhomeComponent},
+  { path: 'cart/:name', component: CartComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
