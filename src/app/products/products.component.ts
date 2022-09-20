@@ -13,10 +13,10 @@ export class ProductsComponent implements OnInit {
   constructor(private service: ProcsService) { }
 
   ngOnInit(): void {
-    this.service.getProducts().subscribe(data => {
-      console.log(data);
-      this.products = data;
-    })
+    //this.service.getProducts().subscribe(data => {
+    //  console.log(data);
+    //  this.products = data;
+    //})
   }
 
   showbyName(): void {

@@ -9,21 +9,25 @@ export class ProcsService {
 
   name:any;
   storesUrl = `http://localhost:8080/stores`;
-  productsUrl = `http://localhost:8080/products`;
+  ordersUrl = `http://localhost:8080/orders`;
 
-  constructor(private httpclient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public getProducts(): Observable<any> {
-    return this.httpclient.get(this.productsUrl);
+  //public getProducts(): Observable<any> {
+  //  return this.httpclient.get(this.productsUrl);
+  //}
+
+  public makeOrder(payload: { id: any; quantity: any; }): Observable<any> {
+    return this.http.post(this.ordersUrl, payload);
   }
 
   public getStores(): Observable<any> {
-    return this.httpclient.get(this.storesUrl);
+    return this.http.get(this.storesUrl);
   }
 
   public findbyStore(name:string): Observable<any> {
     this.name = name;
-    return this.httpclient.get(this.storesUrl, {
+    return this.http.get(this.storesUrl, {
       params: new HttpParams().set('name', this.name)
     });
   }

@@ -12,6 +12,11 @@
         <tr *ngFor="let x of response.data.products">
             <td>{{ x.productName }}</td>
             <td>{{ x.price }}</td>
+            <td><button (click)="additemtoCart(x.id)">+</button></td>
+            <td><button (click)="removeitemfromCart(x.id)">-</button></td>
         </tr>
     </tbody>
   </table>
+  <div>
+    <a [routerLink]="['/cart', response.data.name]">Go to cart!</a>
+  </div>

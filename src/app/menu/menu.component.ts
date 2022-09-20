@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵisListLikeIterable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProcsService } from '../services/procs.service';
 
@@ -9,6 +9,8 @@ import { ProcsService } from '../services/procs.service';
 })
 export class MenuComponent implements OnInit {
 
+  quant = 0;
+  cart = new Map();
   name:any;
   response:any;
 
@@ -23,6 +25,31 @@ export class MenuComponent implements OnInit {
     this.service.findbyStore(this.name).subscribe(data => {
       this.response = data;
       });
+  }
+
+  additemtoCart(id: any): void {
+    if(this.cart.has(id)) {
+      this.quant = this.cart.get(id) + 1;
+      this.cart.set(id, this.quant);
+    } else {
+      this.cart.set(id, 1);
+    }
+    console.log(this.cart);
+    //this.service.addtoCart(payload).subscribe(() => {
+    //  alert('Product Added');
+    //});
+  }
+
+  removeitemfromCart(id: any): void {
+    if(this.cart.has(id)) {
+      this.quant = this.cart.get(id) - 1;
+      if(this.quant == 0){
+        this.cart.delete(id);
+      } else {
+        this.cart.set(id, this.quant);
+      }
+    }
+    console.log(this.cart);
   }
 
 }
