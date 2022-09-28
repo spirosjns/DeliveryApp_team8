@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { ProcsService } from '../services/procs.service';
 
 @Component({

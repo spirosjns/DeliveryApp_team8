@@ -20,7 +20,7 @@
 </table>
 <div *ngIf="cartisnotEmpty()">Total cost is {{ cost }}!</div>
 <div>
-  <button>Proceed!</button>
+  <button [routerLink]="['/order', name, cost]">Proceed!</button>
 </div>
 <div>
   <button [routerLink]="['/menu', name]">Go back!</button>

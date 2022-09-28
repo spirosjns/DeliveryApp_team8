@@ -9,6 +9,8 @@ export class ProcsService {
 
   cart:any;
   name:any;
+  id:any;
+  accountsUrl = `http://localhost:8080/accounts`;
   storesUrl = `http://localhost:8080/stores`;
   ordersUrl = `http://localhost:8080/orders`;
 
@@ -27,6 +29,13 @@ export class ProcsService {
     return this.http.get(this.storesUrl, {
       params: new HttpParams().set('name', this.name)
     });
+  }
+
+  public getAccount(id:number): Observable<any> {
+    this.id = id;
+    return this.http.get(this.accountsUrl, {
+      params: new HttpParams().set('id', this.id)
+    })
   }
 
   public getCart(): Map<any,any> {
