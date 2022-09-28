@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderComponent } from './order/order.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'userhome', component: UserhomeComponent},
   { path: 'cart/:name/:cost', component: CartComponent},
+  { path: 'order/:name/:cost', component: OrderComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
