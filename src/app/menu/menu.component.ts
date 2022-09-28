@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵisListLikeIterable } from '@angular/core';
+import { Component, OnInit, QueryList, ɵisListLikeIterable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProcsService } from '../services/procs.service';
@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   cart = new Map();
   name:any;
   response:any;
+  cost = 0;
 
   constructor(private route:ActivatedRoute, private service:ProcsService,
     private router:Router) { }
@@ -25,25 +26,30 @@ export class MenuComponent implements OnInit {
     });
     this.service.findbyStore(this.name).subscribe(data => {
       this.response = data;
-      console.log(this.response);
+      //console.log(this.response);
       });
+    localStorage.clear();
   }
 
   ngOnDestroy(): void {
     this.service.cart = this.cart;
+    //console.log(this.service.cart);
+    //console.log(this.cost);
   }
 
-  additemtoCart(id: any): void {
+  additemtoCart(id: any, price: any): void {
     if(this.cart.has(id)) {
       this.quant = this.cart.get(id) + 1;
       this.cart.set(id, this.quant);
     } else {
       this.cart.set(id, 1);
     }
-    console.log(this.cart);
+    this.cost = this.cost + price;
+    //console.log(this.cost);
+    //console.log(this.cart);
   }
 
-  removeitemfromCart(id: any): void {
+  removeitemfromCart(id: any, price: any): void {
     if(this.cart.has(id)) {
       this.quant = this.cart.get(id) - 1;
       if(this.quant == 0){
@@ -51,8 +57,10 @@ export class MenuComponent implements OnInit {
       } else {
         this.cart.set(id, this.quant);
       }
+      this.cost = this.cost - price;
     }
-    console.log(this.cart);
+    //console.log(this.cost);
+    //console.log(this.cart);
   }
 
   cartisnotEmpty(): boolean {

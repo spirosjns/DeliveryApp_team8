@@ -11,10 +11,17 @@
     </tr>
   </thead>
   <tbody *ngFor="let x of store.data.products">
-    <tr *ngIf="getProduct(x.id)">
+    <tr *ngIf="show(x)">
       <td>{{ x.productName }}</td>
       <td>{{ cart.get(x.id) }}</td>
       <td>{{ cart.get(x.id)*(x.price) }}</td>
     </tr>
   </tbody>
 </table>
+<div *ngIf="cartisnotEmpty()">Total cost is {{ cost }}!</div>
+<div>
+  <button>Proceed!</button>
+</div>
+<div>
+  <button [routerLink]="['/menu', name]">Go back!</button>
+</div>
