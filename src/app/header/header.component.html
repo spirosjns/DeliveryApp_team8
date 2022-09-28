@@ -17,10 +17,10 @@
             <a class="nav-link active" aria-current="page" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Profile</a>
+            <a [routerLink]="['/login']"><button class="btn btn-success" > Login </button></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Logout</a>
+            <a [routerLink]="['/userhome']"><button class="btn btn-success" > User </button></a>
           </li>
         </ul>
         <form class="d-flex" role="search">

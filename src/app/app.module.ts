@@ -1,6 +1,5 @@
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
-import { StoresComponent } from './stores/stores.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +22,6 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     ProductsComponent,
-    StoresComponent,
     HomeComponent,
     LoginComponent,
     MenuComponent,
