@@ -14,13 +14,9 @@ export class ProcsService {
 
   constructor(private http: HttpClient) { }
 
-  //public getProducts(): Observable<any> {
-  //  return this.httpclient.get(this.productsUrl);
-  //}
-
-  public makeOrder(payload: { id: any; quantity: any; }): Observable<any> {
+  /*public makeOrder(payload: { id: any; quantity: any; }): Observable<any> {
     return this.http.post(this.ordersUrl, payload);
-  }
+  }*/
 
   public getStores(): Observable<any> {
     return this.http.get(this.storesUrl);
@@ -33,4 +29,7 @@ export class ProcsService {
     });
   }
 
+  public getCart(): Map<any,any> {
+    return this.cart;
+  }
 }

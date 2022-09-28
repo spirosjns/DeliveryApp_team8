@@ -1,5 +1,8 @@
 import { HomeComponent } from './home/home.component';
+<<<<<<< HEAD
 import { ProductsComponent } from './products/products.component';
+=======
+>>>>>>> def8f53ff16584193d216ba1027698a15e136ced
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +24,10 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     ProductsComponent,
+=======
+>>>>>>> def8f53ff16584193d216ba1027698a15e136ced
     HomeComponent,
     LoginComponent,
     MenuComponent,
