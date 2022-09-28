@@ -1,17 +1,26 @@
 <div class="container-fluid">
   <br />
   <form (ngSubmit)='getData()' [formGroup]='form' class="form">
+<body class="text-center">
 
-    <input formControlName='email' type="text" class="form-control">
+<main class="form-signin w-100 m-auto">
+<br><br>
+<form>
+  <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+  <div class="form-floating">
+    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
     <small class="alert alert-danger" *ngIf="email.hasError('required') && email.touched">
       Email is required
     </small>
     <small class="alert alert-danger" *ngIf="email.hasError('email') && email.touched">
       Email must have specific format... @ .
     </small>
-
-
-    <input formControlName='password' type="password" class="form-control">
+    <label for="floatingInput">Email address</label>
+  </div>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
     <small class="alert alert-danger"
       *ngIf="password.hasError('required') && password.touched">
       Password is required
@@ -24,8 +33,16 @@
       *ngIf=" password.hasError('pattern') && password.touched">
       Must be only letters...
     </small>
+    <label for="floatingPassword">Password</label>
+  </div>
 
-    <br><br>
-    <button [disabled]='form.invalid' class="btn btn-primary">Login</button>
-  </form>
-</div>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+  <p class="mt-5 mb-3 text-muted">&copy;2022</p>
+</form>
+</main>
+</body>
