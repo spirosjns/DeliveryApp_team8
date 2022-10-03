@@ -4,6 +4,11 @@
      <a [routerLink]="['/userhome']"><button class="btn btn-primary" > Home </button></a>
   </button>
   </span>
+  <span class="example-spacer">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+       <a [routerLink]="['/profile']"><button class="btn btn-primary" > Profile </button></a>
+    </button>
+    </span>
   <button mat-raised-button="warn"></button>
 </mat-toolbar>
 
@@ -23,7 +28,7 @@
           <tr *ngFor="let x of stores.data">
             <mat-grid-tile>
               <td>
-                <a [routerLink]="['/menu', x.name]">
+                <a [routerLink]="['/menu', x.name, account.email]">
       <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">{{x.name}}</text></svg>
                 </a>
                </td>

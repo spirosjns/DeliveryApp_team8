@@ -9,11 +9,11 @@ import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
-  { path: 'menu/:name', component: MenuComponent},
+  { path: 'menu/:name/:email', component: MenuComponent},
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'userhome', component: UserhomeComponent},
-  { path: 'cart/:name/:cost', component: CartComponent},
+  { path: 'cart/:name/:email/:cost', component: CartComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

@@ -11,6 +11,7 @@ import { ProcsService } from '../services/procs.service';
 export class MenuComponent implements OnInit {
 
   quant = 0;
+  acc_email:any;
   cart = new Map();
   name:any;
   response:any;
@@ -21,9 +22,8 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.params.subscribe({
-      next: par => this.name = par['name']
-    });
+    this.name= this.route.snapshot.paramMap.get('name');
+    this.acc_email= this.route.snapshot.paramMap.get('email');
     this.service.findbyStore(this.name).subscribe(data => {
       this.response = data;
       //console.log(this.response);

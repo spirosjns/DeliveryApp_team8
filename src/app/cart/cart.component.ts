@@ -10,35 +10,38 @@ import { ProcsService } from '../services/procs.service';
 })
 export class CartComponent implements OnInit {
 
-  account = {"id":1,"username":"Dimitris",
-  "password":"1234","email":"dimitris@gmail.com",
-  "phoneNumber":"6998717438","age":24,
-  "address":"Menedimou","city":"Chalkida"};
+  account:any;
+  acc_email:any;
   name:any;
   store:any;
   cart:any;
   cost:any;
   key:any;
   val:any;
-  //index = 0;
   paymentsArr = ["CASH", "WIRE_TRANSFER", "CREDIT_CARD"];
   payment:any;
   form = new FormGroup({payment: new FormControl()});
   orderItems: any[] = [];
   data:any;
+  product:any;
 
   constructor(private route:ActivatedRoute, private service:ProcsService,
     private router:Router, private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.name= this.route.snapshot.paramMap.get('name');
+    this.acc_email = this.route.snapshot.paramMap.get('email');
     this.cost= this.route.snapshot.paramMap.get('cost');
-    //console.log(this.cost);
     //console.log(this.name);
     this.service.findbyStore(this.name).subscribe((data:any) => {
       this.store = data;
+      console.log(this.store);
     });
-    //console.log(this.store);
+    this.service.getAccount(this.acc_email).subscribe((data:any) => {
+      this.account = data;
+      console.log(this.account);
+    });
+    //console.log(this.account);
     this.cart = this.service.getCart();
     //console.log(this.cart);
     if(this.cart != null){
@@ -67,7 +70,7 @@ export class CartComponent implements OnInit {
   }
 
   show(x:any): boolean {
-    //console.log(x);
+    //console.log(x[0]);
     //console.log(x.id);
     //console.log(x.id);
     if(this.cart.has(x.id)){
@@ -80,28 +83,38 @@ export class CartComponent implements OnInit {
     }
   }
 
-  /*update(): void {
-    for(index = 0; index < this.store.data.products.length; index++){
-      if(this.cart.has(id)){
-        itemkey = this.store.data.products.
+  update(): void {
+    for(let ind = 0; ind < this.store.data.products.length; ind++){
+      this.product = this.store.data.products[ind];
+      if(this.cart.has(this.product.id)){
+        this.orderItems.push(this.product);
       }
     }
-  }*/
+    console.log(this.orderItems);
+  }
 
   cartisnotEmpty(): boolean {
     return !(this.cart.size == 0);
   }
   submit() {
+    for(let ind = 0; ind < this.store.data.products.length; ind++){
+      this.product = this.store.data.products[ind];
+      if(this.cart.has(this.product.id)){
+        this.orderItems.push(this.product);
+      }
+    }
     this.data = JSON.stringify({data:{
-      account: this.account,
+      account: this.account.data,
       store: this.store.data,
       //submitDate: null,
       orderItems: this.orderItems,
       paymentMethod: this.payment,
       cost: this.cost}
     })
+    console.log(this.data);
     this.service.makeOrder(this.data);
     alert("Order was submitted successfully!");
+    this.orderItems = [];
     this.router.navigate(['userhome']);
   }
 

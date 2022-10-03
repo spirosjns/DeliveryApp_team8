@@ -9,7 +9,7 @@ export class ProcsService {
 
   cart:any;
   name:any;
-  id:any;
+  email:any;
   accountsUrl = `http://localhost:8080/accounts`;
   storesUrl = `http://localhost:8080/stores`;
   ordersUrl = `http://localhost:8080/orders`;
@@ -31,10 +31,11 @@ export class ProcsService {
     });
   }
 
-  public getAccount(id:number): Observable<any> {
-    this.id = id;
+  public getAccount(email:string): Observable<any> {
+    this.email = email;
+    console.log(this.email);
     return this.http.get(this.accountsUrl, {
-      params: new HttpParams().set('id', this.id)
+      params: new HttpParams().set('email', this.email)
     })
   }
 
