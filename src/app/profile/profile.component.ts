@@ -12,7 +12,6 @@ export class ProfileComponent implements OnInit {
   acc_email:any;
   account:any;
   orders:any;
-  id=2;
 
   constructor(private route:ActivatedRoute, private service:ProcsService,
     private router:Router) { }
@@ -23,7 +22,7 @@ export class ProfileComponent implements OnInit {
       this.account = data;
       console.log(this.account.data.id);
     });
-    this.service.getallOrdersbyAccount(this.id).subscribe((data:any) => {
+    this.service.getallOrdersbyAccount(this.acc_email).subscribe((data:any) => {
       this.orders = data;
       console.log(this.orders);
     });
