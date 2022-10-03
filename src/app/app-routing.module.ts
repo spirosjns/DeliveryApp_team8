@@ -7,12 +7,14 @@ import { AuthGuard } from './services/auth.guard';
 import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
   { path: 'menu/:name/:email', component: MenuComponent},
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'userhome', component: UserhomeComponent},
   { path: 'cart/:name/:email/:cost', component: CartComponent},
   { path: 'profile/:email', component: ProfileComponent },

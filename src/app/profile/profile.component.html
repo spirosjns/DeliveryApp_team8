@@ -24,12 +24,30 @@
     <td>{{ account.data.address }}</td>
     <td>{{ account.data.city }}</td>
   </tbody>
+</table>
   <div>
-    <h3>Placed orders</h3>
+    <th scope="col">Placed orders</th>
   </div>
-  <div>
-
-  </div>
+  <table class="table" id='tab'>
+    <thead>
+        <tr>
+            <th scope="col">Order id</th>
+            <th scope="col">Store</th>
+            <!--<th scope="col">Products</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>-->
+            <th scope="col">Total cost</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let data of orders.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.store.name }}</td>
+      <!--<td *ngFor="let pr of data.orderItems">{{ pr.product.productName }}</td>
+      <td *ngFor="let pr of data.orderItems">{{ pr.quantity }}</td>
+      <td *ngFor="let pr of data.orderItems">{{ pr.price }}</td>-->
+      <td>{{ data.cost }}</td>
+    </tbody>
+  </table>
   <section>
     <div class="example-button-row">
       <button [routerLink]="['/userhome']" mat-raised-button color="primary">Go back!</button>

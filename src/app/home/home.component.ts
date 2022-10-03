@@ -7,17 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
- 
+
   constructor(public router:Router) { }
 
   ngOnInit(): void {
   }
 
-  showProducts(){
-    this.router.navigate(['products']);
-  }
-
-  showStores(){
-    this.router.navigate(['stores']);
-  }
 }

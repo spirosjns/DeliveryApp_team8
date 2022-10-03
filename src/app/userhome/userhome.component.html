@@ -9,11 +9,13 @@
        <a [routerLink]="['/profile', account.email]"><button class="btn btn-primary" > Profile </button></a>
     </button>
     </span>
-  <button mat-raised-button="warn"></button>
+  <span class="example-spacer">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+       <a [routerLink]="['/home']"><button class="btn btn-primary" > Logout </button></a>
+    </button>
+    </span>
 </mat-toolbar>
 
-<div class="d-flex justify-content-center">
-</div>
 <div class="col">
   <div class="card shadow-sm">
     <section class="flex-column main-center cross-center">
@@ -44,12 +46,10 @@
   <thead>
     <tr>
         <th scope="col">Most famous stores</th>
-        <th scope="col">Orders served</th>
     </tr>
   </thead>
   <tbody *ngFor="let data of famousStores.data">
     <tr>
-      <td>{{ data.key }}</td>
       <td>{{ data.value }}</td>
     </tr>
   </tbody>
@@ -61,19 +61,19 @@
   </option>
 </select>-->
 <table class="table" id='tab'>
-  <thead>Top 10 products</thead>
+  <thead>
+    <th scope="col">Top 10 products</th>
+  </thead>
   <thead>
     <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Total orders that include it</th>
+        <th scope="col">Product name</th>
+        <th scope="col">Store name</th>
     </tr>
   </thead>
   <tbody *ngFor="let data of topProducts.data">
     <tr>
-      <td>{{ data.key }}</td>
-      <td>{{ data.name }}</td>
-      <td>{{ data.value }}</td>
+      <td>{{ data.firstValue }}</td>
+      <td>{{ data.secondValue }}</td>
     </tr>
   </tbody>
 </table>

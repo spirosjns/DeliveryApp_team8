@@ -11,12 +11,8 @@ export class UserhomeComponent implements OnInit {
 
   stores:any;
   famousStores:any;
-  //famousStoresperCat:any;
   topProducts:any;
-  account = {"id":1,"username":"Dimitris",
-  "password":"1234","email":"dimitris@gmail.com",
-  "phoneNumber":"6998717438","age":24,
-  "address":"Menedimou","city":"Chalkida"};
+  account = {"id":2,"username":"Spyros","password":"8796","email":"spys@gmail.com","phoneNumber":"6998743817","age":24,"address":"Kolokotroni","city":"Patras"};
 
   constructor(private service: ProcsService) {}
 

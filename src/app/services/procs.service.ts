@@ -55,6 +55,12 @@ export class ProcsService {
     return this.http.get(this.ordersUrl);
   }
 
+  public getallOrdersbyAccount(acc_id:any): Observable<any> {
+    this.id = acc_id;
+    console.log(this.id);
+    return this.http.get(this.ordersUrl + '/retrieveAllOrders/' + this.id);
+  }
+
   public getMostFamousStores(): Observable<any> {
     return this.http.get(this.storesUrl + '/reportFamousStores');
   }
