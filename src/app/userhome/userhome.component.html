@@ -1,12 +1,12 @@
 <mat-toolbar color="primary">
   <span class="example-spacer">
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-     <a [routerLink]="['/home']"><button class="btn btn-primary" > Home </button></a>
+     <a [routerLink]="['/userhome']"><button class="btn btn-primary" > Home </button></a>
   </button>
   </span>
   <span class="example-spacer">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-       <a [routerLink]="['/profile']"><button class="btn btn-primary" > Profile </button></a>
+       <a [routerLink]="['/profile', account.email]"><button class="btn btn-primary" > Profile </button></a>
     </button>
     </span>
   <button mat-raised-button="warn"></button>
@@ -40,3 +40,19 @@
       </section>
     </div>
   </div>
+  <table class="table" id='tab'>
+    <thead>
+      <tr>
+          <th scope="col">Most famous stores</th>
+          <th scope="col">Orders served</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of this.famousStores.data">
+      <tr>
+        <td>{{ data.key }}</td>
+        <td>{{ data.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+

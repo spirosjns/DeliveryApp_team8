@@ -10,6 +10,7 @@ import { ProcsService } from '../services/procs.service';
 export class UserhomeComponent implements OnInit {
 
   stores:any;
+  famousStores:any;
   account = {"id":1,"username":"Dimitris",
   "password":"1234","email":"dimitris@gmail.com",
   "phoneNumber":"6998717438","age":24,
@@ -21,6 +22,10 @@ export class UserhomeComponent implements OnInit {
     localStorage.clear();
     this.service.getStores().subscribe(data => {
       this.stores = data;
+      })
+    this.service.getMostFamousStores().subscribe(data => {
+      this.famousStores = data;
+      console.log(this.famousStores.data);
       })
   }
 

@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -30,6 +31,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     UserhomeComponent,
     RegisterComponent,
     CartComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProcsService {
 
+  id:any;
   cart:any;
   name:any;
   email:any;
@@ -24,10 +25,17 @@ export class ProcsService {
     return this.http.get(this.storesUrl);
   }
 
-  public findbyStore(name:string): Observable<any> {
+  public findStorebyName(name:string): Observable<any> {
     this.name = name;
     return this.http.get(this.storesUrl, {
       params: new HttpParams().set('name', this.name)
+    });
+  }
+
+  public findStorebyId(id:any): Observable<any> {
+    this.id = id;
+    return this.http.get(this.storesUrl, {
+      params: new HttpParams().set('storeId', this.id)
     });
   }
 
@@ -45,5 +53,9 @@ export class ProcsService {
 
   public getOrders(): Observable<any> {
     return this.http.get(this.ordersUrl);
+  }
+
+  public getMostFamousStores(): Observable<any> {
+    return this.http.get(this.storesUrl + '/reportFamousStores');
   }
 }

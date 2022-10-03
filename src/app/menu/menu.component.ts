@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
 
     this.name= this.route.snapshot.paramMap.get('name');
     this.acc_email= this.route.snapshot.paramMap.get('email');
-    this.service.findbyStore(this.name).subscribe(data => {
+    this.service.findStorebyName(this.name).subscribe(data => {
       this.response = data;
       //console.log(this.response);
       });

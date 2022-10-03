@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
     this.acc_email = this.route.snapshot.paramMap.get('email');
     this.cost= this.route.snapshot.paramMap.get('cost');
     //console.log(this.name);
-    this.service.findbyStore(this.name).subscribe((data:any) => {
+    this.service.findStorebyName(this.name).subscribe((data:any) => {
       this.store = data;
       console.log(this.store);
     });
@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
     });
     //console.log(this.account);
     this.cart = this.service.getCart();
-    //console.log(this.cart);
+    console.log(this.cart);
     if(this.cart != null){
       for (let x of this.cart.keys()){
         //console.log(x);
