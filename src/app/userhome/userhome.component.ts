@@ -16,7 +16,6 @@ export class UserhomeComponent implements OnInit {
   ngOnInit(): void {
     localStorage.clear();
     this.service.getStores().subscribe(data => {
-      //console.log(data);
       this.stores = data;
       })
   }

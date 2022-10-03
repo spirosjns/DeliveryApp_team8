@@ -41,4 +41,8 @@ export class ProcsService {
   public getCart(): Map<any,any> {
     return this.cart;
   }
+
+  public getOrders(): Observable<any> {
+    return this.http.get(this.ordersUrl);
+  }
 }
