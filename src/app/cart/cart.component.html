@@ -4,38 +4,47 @@
   <button mat-raised-button="warn"></button>
 </mat-toolbar>
 
-<div class="d-flex justify-content-center">
-</div>
-<table class="table" id='tab'>
-  <thead>
-    <tr>
-        <th scope="col">{{ store.data.name }}</th>
-    </tr>
-</thead>
-  <thead>
-    <tr>
-      <th scope="col">Product name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Cost</th>
-    </tr>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="d-flex justify-content-center">
+  </div>
+  <table class="table" id='tab'>
+    <thead>
+      <tr>
+          <th scope="col">{{ store.data.name }}</th>
+      </tr>
   </thead>
-  <tbody *ngFor="let x of store.data.products">
-    <tr *ngIf="show(x)">
-      <td>{{ x.productName }}</td>
-      <td>{{ cart.get(x.id) }}</td>
-      <td>{{ cart.get(x.id)*(x.price) }}</td>
-    </tr>
-  </tbody>
-</table>
-<div *ngIf="cartisnotEmpty()">Total cost is {{ cost }}!</div>
-<section>
-  <div class="example-button-row">
-    <button [routerLink]="['/order', name, cost]" mat-raised-button color="primary">Proceed!</button>
-  </div>
-</section>
-<tr></tr>
-<section>
-  <div class="example-button-row">
-    <button [routerLink]="['/menu', name]" mat-raised-button color="primary">Go back!</button>
-  </div>
-</section>
+    <thead>
+      <tr>
+        <th scope="col">Product name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Cost</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let x of store.data.products">
+      <tr *ngIf="show(x)">
+        <td>{{ x.productName }}</td>
+        <td>{{ cart.get(x.id) }}</td>
+        <td>{{ cart.get(x.id)*(x.price) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <section *ngIf="cartisnotEmpty()">Total cost is {{ cost }}!</section>
+  <select formControlName="payment">
+    <option [ngValue]="null" disabled>Select payment method</option>
+    <option *ngFor="let x of paymentsArr" [ngValue]="x">{{x}}</option>
+  </select>
+  <section>
+    <div class="example-button-row">
+      <div>
+        <button mat-raised-button color="primary" type="submit">Send order!</button>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="example-button-row">
+      <div>
+        <button [routerLink]="['/menu', name]" mat-raised-button color="primary">Go back!</button>
+      </div>
+    </div>
+  </section>
+</form>

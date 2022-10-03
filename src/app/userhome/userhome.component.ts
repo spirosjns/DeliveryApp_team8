@@ -14,8 +14,9 @@ export class UserhomeComponent implements OnInit {
   constructor(private service: ProcsService) {}
 
   ngOnInit(): void {
+    localStorage.clear();
     this.service.getStores().subscribe(data => {
-      console.log(data);
+      //console.log(data);
       this.stores = data;
       })
   }

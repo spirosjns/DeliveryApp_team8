@@ -69,6 +69,8 @@ export class MenuComponent implements OnInit {
 
   emptyCart(): void {
     this.cart.clear();
+    this.cost = 0;
+    localStorage.clear();
     alert("The cart is empty!");
   }
 

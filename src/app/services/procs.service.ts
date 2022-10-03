@@ -16,9 +16,9 @@ export class ProcsService {
 
   constructor(private http: HttpClient) { }
 
-  /*public makeOrder(payload: { id: any; quantity: any; }): Observable<any> {
-    return this.http.post(this.ordersUrl, payload);
-  }*/
+  public makeOrder(data:any): Observable<any> {
+    return this.http.post(this.ordersUrl, data);
+  }
 
   public getStores(): Observable<any> {
     return this.http.get(this.storesUrl);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProcsService } from '../services/procs.service';
 
@@ -9,15 +10,25 @@ import { ProcsService } from '../services/procs.service';
 })
 export class CartComponent implements OnInit {
 
+  account = {"id":1,"username":"Dimitris",
+  "password":"1234","email":"dimitris@gmail.com",
+  "phoneNumber":"6998717438","age":24,
+  "address":"Menedimou","city":"Chalkida"};
   name:any;
   store:any;
   cart:any;
   cost:any;
   key:any;
   val:any;
+  //index = 0;
+  paymentsArr = ["CASH", "WIRE_TRANSFER", "CREDIT_CARD"];
+  payment:any;
+  form = new FormGroup({payment: new FormControl()});
+  orderItems: any[] = [];
+  data:any;
 
   constructor(private route:ActivatedRoute, private service:ProcsService,
-    private router:Router) { }
+    private router:Router, private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.name= this.route.snapshot.paramMap.get('name');
@@ -27,7 +38,7 @@ export class CartComponent implements OnInit {
     this.service.findbyStore(this.name).subscribe((data:any) => {
       this.store = data;
     });
-    //console.log(localStorage);
+    //console.log(this.store);
     this.cart = this.service.getCart();
     //console.log(this.cart);
     if(this.cart != null){
@@ -46,13 +57,22 @@ export class CartComponent implements OnInit {
         this.cart.set(+this.key, +this.val);
       }
     }
+    this.form = this.fb.group({
+      payment: [null]
+    });
+    this.form.valueChanges
+      .subscribe((f: any) => {
+        this.onChange(f);
+      });
   }
 
   show(x:any): boolean {
-    //console.log(this.cart);
+    //console.log(x);
+    //console.log(x.id);
     //console.log(x.id);
     if(this.cart.has(x.id)){
-      //console.log('hi');
+      //this.orderItems.push(x);
+      //console.log(this.orderItems);
       return true;
     }
     else{
@@ -60,7 +80,33 @@ export class CartComponent implements OnInit {
     }
   }
 
+  /*update(): void {
+    for(index = 0; index < this.store.data.products.length; index++){
+      if(this.cart.has(id)){
+        itemkey = this.store.data.products.
+      }
+    }
+  }*/
+
   cartisnotEmpty(): boolean {
     return !(this.cart.size == 0);
+  }
+  submit() {
+    this.data = JSON.stringify({data:{
+      account: this.account,
+      store: this.store.data,
+      //submitDate: null,
+      orderItems: this.orderItems,
+      paymentMethod: this.payment,
+      cost: this.cost}
+    })
+    this.service.makeOrder(this.data);
+    alert("Order was submitted successfully!");
+    this.router.navigate(['userhome']);
+  }
+
+  onChange(value:any) {
+    this.payment = value;
+    console.log(this.payment);
   }
 }

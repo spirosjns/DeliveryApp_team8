@@ -11,12 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
-import { HeaderComponent } from './header/header.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { RegisterComponent } from './register/register.component';
 import { CartComponent } from './cart/cart.component';
-import { FooterComponent } from './footer/footer.component';
-import { OrderComponent } from './order/order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,12 +27,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HomeComponent,
     LoginComponent,
     MenuComponent,
-    HeaderComponent,
     UserhomeComponent,
     RegisterComponent,
     CartComponent,
-    FooterComponent,
-    OrderComponent
   ],
   imports: [
     BrowserModule,
