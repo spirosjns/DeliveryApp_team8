@@ -1,8 +1,17 @@
-<h1>Cart</h1>
+<mat-toolbar color="primary">
+  <span>Cart</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button="warn"></button>
+</mat-toolbar>
+
 <div class="d-flex justify-content-center">
 </div>
-<h3>{{ store.data.name }}</h3>
 <table class="table" id='tab'>
+  <thead>
+    <tr>
+        <th scope="col">{{ store.data.name }}</th>
+    </tr>
+</thead>
   <thead>
     <tr>
       <th scope="col">Product name</th>
@@ -19,9 +28,14 @@
   </tbody>
 </table>
 <div *ngIf="cartisnotEmpty()">Total cost is {{ cost }}!</div>
-<div>
-  <button [routerLink]="['/order', name, cost]">Proceed!</button>
-</div>
-<div>
-  <button [routerLink]="['/menu', name]">Go back!</button>
-</div>
+<section>
+  <div class="example-button-row">
+    <button [routerLink]="['/order', name, cost]" mat-raised-button color="primary">Proceed!</button>
+  </div>
+</section>
+<tr></tr>
+<section>
+  <div class="example-button-row">
+    <button [routerLink]="['/menu', name]" mat-raised-button color="primary">Go back!</button>
+  </div>
+</section>

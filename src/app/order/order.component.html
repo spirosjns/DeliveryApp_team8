@@ -1,13 +1,11 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-
-  <p>
-
     <select formControlName="payment">
       <option [ngValue]="null" disabled>Select payment method</option>
       <option *ngFor="let x of paymentsArr" [ngValue]="x">{{x}}</option>
     </select>
-
-    <button type="submit">Send order!</button>
-  </p>
-
+    <section>
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" type="submit">Send order!</button>
+      </div>
+    </section>
   </form>
