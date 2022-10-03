@@ -14,45 +14,66 @@
 
 <div class="d-flex justify-content-center">
 </div>
-  <div class="col">
-    <div class="card shadow-sm">
-      <section class="flex-column main-center cross-center">
-      <table class="table" id='tab'>
-        <tbody>
-          <thead>
-            <tr>
-                <th scope="col">Stores</th>
-            </tr>
-        </thead>
-        <mat-grid-list cols="4" rowHeight="3:1">
-          <tr *ngFor="let x of stores.data">
-            <mat-grid-tile>
-              <td>
-                <a [routerLink]="['/menu', x.name, account.email]">
-      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">{{x.name}}</text></svg>
-                </a>
-               </td>
-            </mat-grid-tile>
-           </tr>
-        </mat-grid-list>
-        </tbody>
-      </table>
-      </section>
-    </div>
+<div class="col">
+  <div class="card shadow-sm">
+    <section class="flex-column main-center cross-center">
+    <table class="table" id='tab'>
+      <tbody>
+        <thead>
+          <tr>
+              <th scope="col">Stores</th>
+          </tr>
+      </thead>
+      <mat-grid-list cols="4" rowHeight="3:1">
+        <tr *ngFor="let x of stores.data">
+          <mat-grid-tile>
+            <td>
+              <a [routerLink]="['/menu', x.name, account.email]">
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="40%" y="50%" fill="#eceeef" dy=".3em">{{x.name}}</text></svg>
+              </a>
+              </td>
+          </mat-grid-tile>
+          </tr>
+      </mat-grid-list>
+      </tbody>
+    </table>
+    </section>
   </div>
-  <table class="table" id='tab'>
-    <thead>
-      <tr>
-          <th scope="col">Most famous stores</th>
-          <th scope="col">Orders served</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let data of this.famousStores.data">
-      <tr>
-        <td>{{ data.key }}</td>
-        <td>{{ data.value }}</td>
-      </tr>
-    </tbody>
-  </table>
-
-
+</div>
+<table class="table" id='tab'>
+  <thead>
+    <tr>
+        <th scope="col">Most famous stores</th>
+        <th scope="col">Orders served</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of famousStores.data">
+    <tr>
+      <td>{{ data.key }}</td>
+      <td>{{ data.value }}</td>
+    </tr>
+  </tbody>
+</table>
+<!--<select onchange="show(cat.id)">
+  <option [ngValue]="null" disabled>Select category</option>
+  <option *ngFor="let cat of stores.data.storeCategory" [ngValue]="cat">
+    {{ cat.id }}
+  </option>
+</select>-->
+<table class="table" id='tab'>
+  <thead>Top 10 products</thead>
+  <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Total orders that include it</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let data of topProducts.data">
+    <tr>
+      <td>{{ data.key }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.value }}</td>
+    </tr>
+  </tbody>
+</table>

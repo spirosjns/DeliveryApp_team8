@@ -58,4 +58,12 @@ export class ProcsService {
   public getMostFamousStores(): Observable<any> {
     return this.http.get(this.storesUrl + '/reportFamousStores');
   }
+
+  public getMostFamousStoresperCategory(id:any): Observable<any> {
+    return this.http.get(this.storesUrl + '/reportFamousStoresPerCategory?id=' + id);
+  }
+
+  public top10products(): Observable<any> {
+    return this.http.get(this.storesUrl + '/reportTop10Products');
+  }
 }
