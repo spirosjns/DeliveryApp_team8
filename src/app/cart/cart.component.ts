@@ -32,7 +32,6 @@ export class CartComponent implements OnInit {
     this.name= this.route.snapshot.paramMap.get('name');
     this.acc_email = this.route.snapshot.paramMap.get('email');
     this.cost= this.route.snapshot.paramMap.get('cost');
-    //console.log(this.name);
     this.service.findStorebyName(this.name).subscribe((data:any) => {
       this.store = data;
       console.log(this.store);
@@ -41,14 +40,10 @@ export class CartComponent implements OnInit {
       this.account = data;
       console.log(this.account);
     });
-    //console.log(this.account);
     this.cart = this.service.getCart();
-    console.log(this.cart);
     if(this.cart != null){
       for (let x of this.cart.keys()){
-        //console.log(x);
         localStorage.setItem(x, this.cart.get(x));
-        //console.log(localStorage.getItem(x));
       }
     }
     else {
@@ -56,7 +51,6 @@ export class CartComponent implements OnInit {
       for(let i=0; i < localStorage.length; i++){
         this.key = localStorage.key(i);
         this.val = localStorage.getItem(this.key);
-        //console.log(+this.key);
         this.cart.set(+this.key, +this.val);
       }
     }
@@ -70,27 +64,12 @@ export class CartComponent implements OnInit {
   }
 
   show(x:any): boolean {
-    //console.log(x[0]);
-    //console.log(x.id);
-    //console.log(x.id);
     if(this.cart.has(x.id)){
-      //this.orderItems.push(x);
-      //console.log(this.orderItems);
       return true;
     }
     else{
       return false;
     }
-  }
-
-  update(): void {
-    for(let ind = 0; ind < this.store.data.products.length; ind++){
-      this.product = this.store.data.products[ind];
-      if(this.cart.has(this.product.id)){
-        this.orderItems.push(this.product);
-      }
-    }
-    console.log(this.orderItems);
   }
 
   cartisnotEmpty(): boolean {
@@ -111,10 +90,12 @@ export class CartComponent implements OnInit {
       paymentMethod: this.payment,
       cost: this.cost}
     })
-    console.log(this.data);
-    this.service.makeOrder(this.data);
-    alert("Order was submitted successfully!");
-    this.orderItems = [];
+    this.service.makeOrder(this.data).subscribe({
+      complete: () => {
+        this.orderItems = [];
+      },
+    });
+    alert("Still under construction! Come back later!");
     this.router.navigate(['userhome']);
   }
 

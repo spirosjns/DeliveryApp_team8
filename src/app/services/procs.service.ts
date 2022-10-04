@@ -11,6 +11,7 @@ export class ProcsService {
   cart:any;
   name:any;
   email:any;
+  order:any;
   accountsUrl = `http://localhost:8080/accounts`;
   storesUrl = `http://localhost:8080/stores`;
   ordersUrl = `http://localhost:8080/orders`;
@@ -18,7 +19,9 @@ export class ProcsService {
   constructor(private http: HttpClient) { }
 
   public makeOrder(data:any): Observable<any> {
-    return this.http.post(this.ordersUrl, data);
+    this.order = data;
+    console.log(this.order);
+    return this.http.post(this.ordersUrl, this.order);
   }
 
   public getStores(): Observable<any> {
@@ -41,7 +44,6 @@ export class ProcsService {
 
   public getAccount(email:string): Observable<any> {
     this.email = email;
-    console.log(this.email);
     return this.http.get(this.accountsUrl, {
       params: new HttpParams().set('email', this.email)
     })
@@ -57,7 +59,6 @@ export class ProcsService {
 
   public getallOrdersbyAccount(acc_id:any): Observable<any> {
     this.id = acc_id;
-    console.log(this.id);
     return this.http.get(this.ordersUrl + '/retrieveAllOrders/' + this.id);
   }
 

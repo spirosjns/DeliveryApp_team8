@@ -11,8 +11,11 @@ export class UserhomeComponent implements OnInit {
 
   stores:any;
   famousStores:any;
+  //famousStoresperCat:any;
   topProducts:any;
-  account = {"id":2,"username":"Spyros","password":"8796","email":"spys@gmail.com","phoneNumber":"6998743817","age":24,"address":"Kolokotroni","city":"Patras"};
+  account = {"id":2,"username":"Spyros","password":"8796",
+  "email":"spys@gmail.com","phoneNumber":"6998743817",
+  "age":24,"address":"Kolokotroni","city":"Patras"};
 
   constructor(private service: ProcsService) {}
 
@@ -23,18 +26,16 @@ export class UserhomeComponent implements OnInit {
       })
     this.service.getMostFamousStores().subscribe(data => {
       this.famousStores = data;
-      console.log(this.famousStores.data);
       })
     this.service.top10products().subscribe(data => {
       this.topProducts = data;
-      console.log(this.famousStores.data);
       })
   }
 
   /*show(cat:any): void {
     this.service.getMostFamousStoresperCategory(cat).subscribe(data => {
       this.famousStoresperCat = data;
-      console.log(this.famousStores.data);
+      console.log(this.famousStoresperCat.data);
       })
   }*/
 }
